@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "312677296353",
+    "firebase_url": "https://eetnmobile-default-rtdb.firebaseio.com",
+    "project_id": "eetnmobile",
+    "storage_bucket": "eetnmobile.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312677296353:android:88e58e1f97d09126eeafa0",
+        "android_client_info": {
+          "package_name": "com.appdevelop.eetn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312677296353-qva5bm5g8s5tg66aa8jsla53uou71o3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnCGUuVhM0_-UM_ZTW4Xdn_HGixMH_4_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312677296353-qva5bm5g8s5tg66aa8jsla53uou71o3r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "312677296353-dcmr0hqd5mg2ajbk75in73v9kf17g1j5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.emiliano.eetn.EETNMobile"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
