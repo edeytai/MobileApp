@@ -30,7 +30,7 @@ La aplicación sigue una arquitectura modular donde:
 
 - **Models**: Definen la estructura de datos
 - **Services**: Contienen la lógica de negocio y comunicación con APIs
-- **Views**: Manejan la presentación y interacción del usuario
+- **Views**: Manejan la presentación e interacción del usuario
 - **Utils**: Proporcionan utilidades compartidas
 
 ## 🔧 Tecnologías Principales
