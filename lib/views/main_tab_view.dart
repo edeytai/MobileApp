@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_view.dart';
 import 'package:eetn/views/profile_view.dart';
 import '../utils/app_colors.dart';
+import 'ingredient_selection_view.dart';
 
 /// Vista principal que contiene la navegación por tabs
 /// Maneja la transición entre las diferentes secciones de la aplicación
@@ -20,7 +21,7 @@ class _MainTabViewState extends State<MainTabView> {
   /// Lista de páginas que se muestran en cada tab
   final List<Widget> _pages = [
     const HomeView(),
-    const CreateRecipePlaceholder(),
+    const IngredientSelectionView(),
     const ProfileView(),
   ];
 

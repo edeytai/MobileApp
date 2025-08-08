@@ -1,4 +1,5 @@
 import 'package:uuid/uuid.dart';
+export 'user_nutrition.dart';
 
 /// Enum que define las categorías de ingredientes disponibles
 /// Utilizado para clasificar ingredientes por tipo nutricional
