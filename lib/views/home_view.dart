@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../utils/app_colors.dart';
 import '../services/data_service.dart';
 import '../services/favorite_recipes_manager.dart';
+import '../services/nutrition_service.dart';
 import '../models/models.dart';
 import 'recipe_detail_view.dart';
 import 'recipe_list_full_screen_view.dart';
@@ -175,67 +176,95 @@ class _HomeViewBodyState extends State<_HomeViewBody> {
 class _NutritionSummarySection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final items = [
-      _NutritionCard(
-        icon: Icons.local_fire_department,
-        title: 'Calorías',
-        value: '832',
-        unit: 'kCal',
-      ),
-      _NutritionCard(
-        icon: Icons.bolt,
-        title: 'Proteína',
-        value: '200',
-        unit: 'g',
-      ),
-      _NutritionCard(
-        icon: Icons.eco,
-        title: 'Carbohidratos',
-        value: '180',
-        unit: 'g',
-      ),
-      _NutritionCard(
-        icon: Icons.opacity,
-        title: 'Grasas',
-        value: '70',
-        unit: 'g',
-      ),
-      _NutritionCard(icon: Icons.grass, title: 'Fibra', value: '25', unit: 'g'),
-      _NutritionCard(
-        icon: Icons.water_drop,
-        title: 'Agua',
-        value: '1000',
-        unit: 'ml',
-      ),
-      _NutritionCard(icon: Icons.star, title: 'Azúcar', value: '30', unit: 'g'),
-      _NutritionCard(
-        icon: Icons.spa,
-        title: 'Sodio',
-        value: '1500',
-        unit: 'mg',
-      ),
-    ];
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Resumen Nutricional',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 8),
-            SizedBox(
-              width: constraints.maxWidth,
-              height: 130,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: items.length,
-                separatorBuilder: (context, index) => const SizedBox(width: 8),
-                itemBuilder: (context, i) => items[i],
-              ),
-            ),
-          ],
+    return StreamBuilder<UserNutrition?>(
+      stream: Stream.fromFuture(NutritionService.instance.getUserDailyNutrition()),
+      builder: (context, snapshot) {
+        final nutrition = snapshot.data;
+        final items = [
+          _NutritionCard(
+            icon: Icons.local_fire_department,
+            title: 'Calorías',
+            value: nutrition?.calorias.toStringAsFixed(0) ?? '0',
+            unit: 'kCal',
+          ),
+          _NutritionCard(
+            icon: Icons.bolt,
+            title: 'Proteína',
+            value: nutrition?.proteinas.toStringAsFixed(1) ?? '0',
+            unit: 'g',
+          ),
+          _NutritionCard(
+            icon: Icons.eco,
+            title: 'Carbohidratos',
+            value: nutrition?.carbohidratos.toStringAsFixed(1) ?? '0',
+            unit: 'g',
+          ),
+          _NutritionCard(
+            icon: Icons.opacity,
+            title: 'Grasas',
+            value: nutrition?.grasas.toStringAsFixed(1) ?? '0',
+            unit: 'g',
+          ),
+          _NutritionCard(
+            icon: Icons.grass,
+            title: 'Fibra',
+            value: nutrition?.fibra.toStringAsFixed(1) ?? '0',
+            unit: 'g'
+          ),
+          _NutritionCard(
+            icon: Icons.water_drop,
+            title: 'Agua',
+            value: nutrition?.agua.toStringAsFixed(0) ?? '0',
+            unit: 'ml',
+          ),
+          _NutritionCard(
+            icon: Icons.star,
+            title: 'Azúcar',
+            value: nutrition?.azucares.toStringAsFixed(1) ?? '0',
+            unit: 'g'
+          ),
+          _NutritionCard(
+            icon: Icons.spa,
+            title: 'Sodio',
+            value: nutrition?.sodio.toStringAsFixed(0) ?? '0',
+            unit: 'mg',
+          ),
+        ];
+
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Resumen Nutricional',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    if (!snapshot.hasData && !snapshot.hasError)
+                      const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(strokeWidth: 2),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: constraints.maxWidth,
+                  height: 130,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: items.length,
+                    separatorBuilder: (context, index) => const SizedBox(width: 8),
+                    itemBuilder: (context, i) => items[i],
+                  ),
+                ),
+              ],
+            );
+          },
         );
       },
     );

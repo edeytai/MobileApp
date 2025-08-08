@@ -6,6 +6,7 @@ import 'views/login_view.dart';
 import 'views/onboarding_view.dart';
 import 'views/main_tab_view.dart';
 import 'utils/app_colors.dart';
+import 'views/create_recipe_next_placeholder.dart';
 
 /// Punto de entrada principal de la aplicación EETN
 /// Inicializa Firebase y ejecuta la aplicación
@@ -34,6 +35,7 @@ class EETNApp extends StatelessWidget {
       home: const _RootFlow(),
       routes: {
         '/login': (context) => const LoginView(),
+        '/create-next': (context) => const CreateRecipeNextPlaceholder(),
       },
     );
   }
