@@ -48,6 +48,14 @@ Esta carpeta contiene todos los servicios y la lógica de negocio de la aplicaci
   - Registro de consumo de agua
 - **Integración**: Firestore para almacenamiento de datos nutricionales
 
+### `ingredient_service.dart`
+- **Propósito**: Proveer catálogo de ingredientes desde Firestore
+- **Funcionalidades**:
+  - `watchIngredients()` stream reactivo del catálogo
+  - `fetchIngredients()` consulta única
+- **Colección**: `ingredientes_catalogo` (campos: `nombre`, `imageUrl`)
+- **Uso**: Consumido por `ingredient_selection_view.dart`
+
 ## 🏗️ Arquitectura de Servicios
 
 ### Patrón Singleton

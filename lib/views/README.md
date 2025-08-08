@@ -92,6 +92,15 @@ Esta carpeta contiene todas las pantallas y widgets de la interfaz de usuario de
   - Navegación a detalles
 - **Características**: Vista reutilizable para diferentes listas
 
+#### `ingredient_selection_view.dart`
+- **Propósito**: Selección de ingredientes para crear recetas
+- **Funcionalidades**:
+  - Búsqueda por nombre
+  - Selección múltiple con cuadrícula 3x3
+  - Panel inferior con ingredientes seleccionados y opción de quitar
+  - Navegación al siguiente paso del flujo
+- **Integración**: Lee ingredientes desde Firestore a través de `IngredientService`
+
 ### 👤 Perfil de Usuario
 
 #### `profile_view.dart`

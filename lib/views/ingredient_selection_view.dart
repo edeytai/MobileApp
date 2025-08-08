@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../utils/app_colors.dart';
 import '../services/ingredient_service.dart';
 
-/// Pantalla de selección de ingredientes para el flujo de crear receta
+/// Pantalla que permite seleccionar ingredientes desde un catálogo en Firestore.
+/// Incluye búsqueda, selección múltiple y un panel inferior con los
+/// ingredientes elegidos para continuar al siguiente paso del flujo.
 class IngredientSelectionView extends StatefulWidget {
   const IngredientSelectionView({super.key});
 
