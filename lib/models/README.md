@@ -15,6 +15,7 @@ Esta carpeta contiene todos los modelos de datos y estructuras utilizadas en la 
     - `Receta`: Modelo principal de receta con todos sus datos
     - `SugerenciaReceta`: Sugerencias de recetas
     - `FiltrosBusqueda`: Filtros para búsqueda de recetas
+    - `UserNutrition`: Seguimiento nutricional diario del usuario
   - **Modelos de base de datos**:
     - `DatabaseRecipe`: Estructura para almacenar recetas en Firestore
     - `DatabaseFavorite`: Estructura para favoritos
@@ -73,11 +74,30 @@ class InformacionNutricional {
 }
 ```
 
+#### `UserNutrition`
+```dart
+class UserNutrition {
+  final String userId;
+  final DateTime date;
+  final double calorias;
+  final double proteinas;
+  final double carbohidratos;
+  final double grasas;
+  final double fibra;
+  final double azucares;
+  final double sodio;
+  final double agua;
+  final List<String> recetasConsumidas;
+  final DateTime updatedAt;
+}
+```
+
 ## 🔄 Relaciones
 
 - **Receta** ↔ **IngredienteReceta** ↔ **Ingrediente**: Una receta tiene múltiples ingredientes con cantidades específicas
 - **Receta** ↔ **InformacionNutricional**: Cada receta tiene información nutricional
 - **Usuario** ↔ **Favoritos**: Los usuarios pueden marcar recetas como favoritas
+- **Usuario** ↔ **UserNutrition**: Cada usuario tiene un registro nutricional diario
 
 ## 📊 Uso en la Aplicación
 

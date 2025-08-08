@@ -39,6 +39,15 @@ Esta carpeta contiene todos los servicios y la lógica de negocio de la aplicaci
 - **Estado**: Actualmente es un placeholder para generación de recetas con IA
 - **Funcionalidades**: Preparado para integración con servicios de IA
 
+### `nutrition_service.dart`
+- **Propósito**: Gestiona el seguimiento nutricional de los usuarios
+- **Funcionalidades**:
+  - Obtención y actualización de datos nutricionales diarios
+  - Almacenamiento en Firestore
+  - Historial nutricional
+  - Registro de consumo de agua
+- **Integración**: Firestore para almacenamiento de datos nutricionales
+
 ## 🏗️ Arquitectura de Servicios
 
 ### Patrón Singleton
@@ -61,6 +70,7 @@ class AuthService {
 - `usuarios`: Perfiles de usuarios
 - `favoritos`: Recetas favoritas por usuario
 - `recetas`: Catálogo de recetas (futuro)
+- `nutricion_usuarios`: Datos nutricionales diarios de usuarios
 
 #### Firebase Auth
 - Autenticación con email/password
@@ -114,6 +124,18 @@ await FavoriteRecipesManager.instance.addToFavorites(recipeId);
 
 // Verificar si es favorito
 bool isFavorite = await FavoriteRecipesManager.instance.isFavorite(recipeId);
+```
+
+### NutritionService
+```dart
+// Obtener datos nutricionales del día
+UserNutrition? nutrition = await NutritionService.instance.getUserDailyNutrition();
+
+// Registrar consumo de agua
+await NutritionService.instance.logWaterConsumption(250.0); // 250ml
+
+// Obtener historial nutricional
+List<UserNutrition> history = await NutritionService.instance.getNutritionHistory();
 ```
 
 ## 🔧 Configuración
