@@ -206,7 +206,10 @@ class _IngredientSelectionViewState extends State<IngredientSelectionView> {
 
   void _goToNextStep() {
     if (_selectedIngredientNames.isEmpty) return;
-    Navigator.of(context).pushNamed('/create-next');
+    Navigator.of(context).pushNamed(
+      '/create-loading',
+      arguments: _selectedIngredientNames.toList(growable: false),
+    );
   }
 }
 

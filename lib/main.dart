@@ -7,6 +7,7 @@ import 'views/onboarding_view.dart';
 import 'views/main_tab_view.dart';
 import 'utils/app_colors.dart';
 import 'views/create_recipe_next_placeholder.dart';
+import 'views/create_recipe_loading_view.dart';
 
 /// Punto de entrada principal de la aplicación EETN
 /// Inicializa Firebase y ejecuta la aplicación
@@ -36,6 +37,13 @@ class EETNApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginView(),
         '/create-next': (context) => const CreateRecipeNextPlaceholder(),
+        '/create-loading': (context) {
+          final args = ModalRoute.of(context)?.settings.arguments;
+          final selectedNames = (args is List)
+              ? args.map((e) => e.toString()).toList()
+              : <String>[];
+          return CreateRecipeLoadingView(ingredientNames: selectedNames);
+        },
       },
     );
   }
